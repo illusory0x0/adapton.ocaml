@@ -381,7 +381,7 @@ module Make (Params:AParamsType) = struct
   module Undo_buff = Set.Make(
     struct
       type t = meta_node * ((* closure pointing at susp_ptr *) bool -> unit)
-      let compare a b = Pervasives.compare ((fst a).id) ((fst b).id)
+      let compare a b = Stdlib.compare ((fst a).id) ((fst b).id)
     end)
   let undo_buff : Undo_buff.t ref = ref Undo_buff.empty
 

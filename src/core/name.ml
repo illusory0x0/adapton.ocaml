@@ -82,7 +82,7 @@ struct
     | n -> fun k -> let k1,k2 = fork k in k1 :: (forkn (n-1) k2)
 
   let hash seed x = Hashtbl.seeded_hash seed x.hash
-  let compare = Pervasives.compare
+  let compare = Stdlib.compare
   let equal x y = x == y || (compare x y = 0)
   let sanitize x = x
   let pp fmt s = Format.fprintf fmt "%s" (show s)

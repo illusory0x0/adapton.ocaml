@@ -207,7 +207,7 @@ module LazyNonInc = struct
     let pp ff p = Format.pp_print_string ff (show p)
     let hash seed n = Hashtbl.seeded_hash seed n.id
     let compare t t' = compare (hash 42 t) (hash 42 t')
-    let equal {id=id1} {id=id2} = id1 = id2
+    let equal {id=id1;_} {id=id2;_} = id1 = id2
     let force n = (* incr Statistics.Counts.evaluate;  *) failwith "TODO"
     let sanitize n = n
 
