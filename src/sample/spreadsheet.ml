@@ -11,7 +11,7 @@
  *   run-time stats:      Statistics
 *)
 open Adapton
-
+open Collections 
 (* The core abstraction that Adapton provides to build incremental
  * computations is an Articulation Point (art for short). Arts are
  * locations in our program where Adapton redirects control through

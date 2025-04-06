@@ -1,4 +1,5 @@
 open Adapton
+open Collections 
 
 module     N = Name
 module IntST = SpreadTree.Make(Insts.Nominal)(N)(Types.Int)
