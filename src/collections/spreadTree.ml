@@ -74,6 +74,8 @@
     defined and used separately from the usual cases of the structure,
     which are defined in the usual (eager) fashion.
 *)
+open Adapton
+
 module type S = sig
   type elt
   type name

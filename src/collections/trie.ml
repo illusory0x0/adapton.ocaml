@@ -1,3 +1,5 @@
+open Adapton
+
 (* Adapted from Pugh POPL '89 *)
 
 module type DataS = Data.S
@@ -443,7 +445,7 @@ struct
 
 
   let add : t -> elt -> t =
-    let rec loop ({ Meta.min_depth=md } as m) bs h t e = match t with
+    let rec loop ({ Meta.min_depth=md ;_ } as m) bs h t e = match t with
       | Node (bs, t0, t1) ->
         let h' = h lsr 1 in
         if h mod 2 = 0
@@ -812,7 +814,7 @@ module Map = struct
       let hash seed (k, v) = K.hash (V.hash seed v) k
       let place_hash = place
       let place_equal (k, _) (k', _) = K.equal k k'
-      let compare t t' = Pervasives.compare (hash 42 t) (hash 42 t')
+      let compare t t' = Stdlib.compare (hash 42 t) (hash 42 t')
     end)
         
     type k = K.t
@@ -858,7 +860,7 @@ module Map = struct
       let hash seed (k, v) = K.hash (V.hash seed v) k
       let place_hash = place
       let place_equal (k, _) (k', _) = K.equal k k'
-      let compare t t' = Pervasives.compare (hash 42 t) (hash 42 t')
+      let compare t t' = Stdlib.compare (hash 42 t) (hash 42 t')
     end)
         
     type k = K.t
