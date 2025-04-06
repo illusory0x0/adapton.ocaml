@@ -1,3 +1,6 @@
+open Collections
+open Adapton
+
 (*
   this is an old makefile example left for p4 reference, availability unknown
   make experiments OCAMLBUILD_EXTRAFLAGS='-ppflag "camlp4of -DADAPTON_LOG "'
@@ -503,7 +506,7 @@ module Make_experiment ( ListApp : ListAppType ) = struct
               0 0.0
               0 Params.granularity;
           );
-          Pervasives.flush handle
+          Stdlib.flush handle
       in
       benchmark_demand Params.demand
     in
@@ -815,7 +818,7 @@ module Reverse = struct
     (AL : ArtLib.S) =
   struct
     let name = "Rope_reverse_" ^ N.name
-    let int_compare : int -> int -> int = Pervasives.compare
+    let int_compare : int -> int -> int = Stdlib.compare
     module ListRep = SpreadTreeRep ( AL )
     let compute inp =
       let nm = (Key.gensym ()) in
@@ -834,7 +837,7 @@ module Reverse = struct
     (AL : ArtLib.S) =
   struct
     let name = "List_reverse_" ^ N.name
-    let int_compare : int -> int -> int = Pervasives.compare
+    let int_compare : int -> int -> int = Stdlib.compare
     module ListRep = SpreadTreeRep ( AL )
     let compute inp =
       let nm = (Key.gensym ()) in
@@ -856,7 +859,7 @@ module Mergesorts = struct
     ( AL : ArtLib.S ) =
   struct
     let name = "Rope_mergesort_" ^ N.name
-    let int_compare : int -> int -> int = Pervasives.compare
+    let int_compare : int -> int -> int = Stdlib.compare
     module ListRep = SpreadTreeRep ( AL )
     let compute inp =
       let nm = Key.fork (Key.gensym ()) in
@@ -877,7 +880,7 @@ module Median = struct
     ( AL : ArtLib.S ) =
   struct
     let name = "Rope_median_" ^ N.name
-    let int_compare : int -> int -> int = Pervasives.compare
+    let int_compare : int -> int -> int = Stdlib.compare
     module ListRep = SpreadTreeRep ( AL )
     let compute inp =
       let nm1, nm2 = Key.fork (Key.gensym()) in
@@ -907,7 +910,7 @@ module Median = struct
     ( AL : ArtLib.S ) =
   struct
     let name = "Rope_center_" ^ N.name
-    let int_compare : int -> int -> int = Pervasives.compare
+    let int_compare : int -> int -> int = Stdlib.compare
     module ListRep = SpreadTreeRep ( AL )
     let compute inp =
       let nm1 = Key.gensym() in
@@ -1058,7 +1061,7 @@ module Reduction = struct
         (ListRep.KvMap.KeySeq.list_of_tree avl `Nil)
       )
     let trusted x =
-      let module S = Set.Make(struct type t = int let compare = Pervasives.compare end) in
+      let module S = Set.Make(struct type t = int let compare = Stdlib.compare end) in
       let set = List.fold_left (fun set elt -> S.add elt set) S.empty x in
       (S.elements set)
   end

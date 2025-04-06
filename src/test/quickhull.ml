@@ -1,3 +1,6 @@
+open Adapton 
+open Collections
+
 (*
  -- TODO** : Test this code for correctness.
  -- TODO   : Maybe make it use OCaml's Rational Number representation instead of IEEE floats.

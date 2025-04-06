@@ -1,3 +1,6 @@
+open Adapton 
+open Collections
+
 let min_depth : int ref              = ref 1
 let art_ifreq : Trie.Meta.Freq.t ref = ref (`Const 1.)
 let size      : int ref              = ref 10

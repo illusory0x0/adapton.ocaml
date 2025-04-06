@@ -1,3 +1,5 @@
+open Adapton
+open Collections 
 
 let min_depth = 10
        

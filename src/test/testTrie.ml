@@ -1,3 +1,5 @@
+open Collections
+open Adapton
 open Trie
 
 let padr n s =
